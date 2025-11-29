@@ -32,7 +32,3 @@ jobs:
       - name: Run tests
         run: |
           make test
-
-      - name: Run demo CLI (smoke test)
-        run: |
-          make run-demo

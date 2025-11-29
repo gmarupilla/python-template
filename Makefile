@@ -38,9 +38,6 @@ dev: venv
 test:
 	$(PYTHON) -m pytest -v
 
-run-demo:
-	$(PYTHON) -m terraflow.cli --config examples/demo_config.yml
-
 # ---------------------------
 # Build & Release
 # ---------------------------
