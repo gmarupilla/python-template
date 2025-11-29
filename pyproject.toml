@@ -36,4 +36,4 @@ Homepage = "https://github.com/gmarupilla/<PROJECT_PATH>"
 "Bug Tracker" = "https://github.com/gmarupilla/<PROJECT_PATH>/issues"
 
 [tool.setuptools]
-packages = ["terraflow"]
+packages = ["src"]
