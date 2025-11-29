@@ -2,7 +2,7 @@
 PYTHON = .venv/bin/python
 PIP = .venv/bin/pip
 
-.PHONY: help venv install dev test run build clean docker-build docker-run release
+.PHONY: help venv install dev test run build clean docker-build docker-run lint lint-fix
 
 help:
 	@echo "Available commands:"
@@ -49,3 +49,11 @@ build:
 clean:
 	rm -rf build dist *.egg-info
 	find . -name "__pycache__" -exec rm -rf {} +
+
+lint:
+	ruff check src tests
+	black --check src tests
+
+lint-fix:
+	ruff check src tests --fix
+	black src tests
