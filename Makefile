@@ -1,6 +1,8 @@
 # Variables
 PYTHON = .venv/bin/python
 PIP = .venv/bin/pip
+RUFF = .venv/bin/ruff
+BLACK = .venv/bin/black
 
 .PHONY: help venv install dev test run build clean docker-build docker-run lint lint-fix
 
@@ -49,11 +51,15 @@ build:
 clean:
 	rm -rf build dist *.egg-info
 	find . -name "__pycache__" -exec rm -rf {} +
+	find . -name "*.pyc" -exec rm -f {} +
+	find . -name "*.pyo" -exec rm -f {} +
+	find . -name "*.egg-info" -exec rm -rf {} +
+	find . -name ".pytest_cache" -exec rm -rf {} +
 
 lint:
-	ruff check src tests
-	black --check src tests
+	$(RUFF) check src tests
+	$(BLACK) --check src tests
 
 lint-fix:
-	ruff check src tests --fix
-	black src tests
+	$(RUFF) check src tests --fix
+	$(BLACK) src tests
